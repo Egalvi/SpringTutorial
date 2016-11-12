@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+    <!-- Initialization for data source -->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <!--
+        If you have your connection-url configured like this
+
+jdbc:h2:mem:test
+the content of the database is lost at the moment the last connection is closed.
+
+If you want to keep your content you have to configure the url like this
+
+jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+If doing so, h2 will keep its content as long as the vm lives. -->
+        <property name="url" value="jdbc:h2:mem:tst;DB_CLOSE_DELAY=-1"/>
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="password"/>-->
+    </bean>
+
+    <!-- Definition for studentJDBCTemplate bean -->
+    <bean id="studentJDBCTemplate"
+          class="ru.egalvi.springtutorial.jdbc.StudentJDBCTemplate"
+          init-method="init">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>
