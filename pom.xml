@@ -15,6 +15,7 @@
         <module>JDBC</module>
         <module>TransactionManagement</module>
         <module>WebMVC</module>
+        <module>Logging</module>
     </modules>
     <properties>
         <spring.framework.version>4.3.3.RELEASE</spring.framework.version>
