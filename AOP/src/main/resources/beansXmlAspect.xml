@@ -24,10 +24,10 @@
 
         <!-- for one method of a class -->
         <aop:aspect id="log1" ref="logging">
-            <aop:pointcut id="selectAll1"
-                          expression="execution(* com.tutorialspoint.Student.getName(..))"/>
-            <aop:before pointcut-ref="selectAll" method="beforeAdvice"/>
-            <aop:after pointcut-ref="selectAll" method="afterAdvice"/>
+            <aop:pointcut id="selectOne"
+                          expression="execution(* ru.egalvi.springtutorial.aop.xml.Student.getName(..))"/>
+            <aop:before pointcut-ref="selectOne" method="beforeAdvice"/>
+            <aop:after pointcut-ref="selectOne" method="afterAdvice"/>
         </aop:aspect>
     </aop:config>
 
